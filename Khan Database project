@@ -1,0 +1,26 @@
+Create Car store database
+CREATE TABLE cars ( id INTEGER PRIMARY KEY, make TEXT, model TEXT, color TEXT, price INTEGER, rating INTEGER);
+
+INSERT INTO cars VALUES (1, "mercedes", "sedan", "white", 30000, 8);
+INSERT INTO cars VALUES (2, 'ford', 'truck', 'black', 40000, 8);
+INSERT INTO cars VALUES (3, 'toyota', 'sedan', 'red', 20000, 9);
+INSERT INTO cars VALUES (4, 'honda', 'sedan', 'black', 25000, 10);
+INSERT INTO cars VALUES (5, 'Kia', 'suv', 'green', 35000, 10);
+INSERT INTO cars VALUES (6, 'gmc', 'truck', 'black', 45000, 7);
+INSERT INTO cars VALUES (7, 'nissan', 'sedan', 'silver', 30000, 7);
+INSERT INTO cars VALUES (8, 'dodge', 'suv', 'black', 50000, 6);
+INSERT INTO cars VALUES (9, 'volvo', 'sedan', 'black', 32000, 6);
+INSERT INTO cars VALUES (10, 'ram', 'truck', 'white', 45000, 7);
+INSERT INTO cars VALUES (11, 'jeep', 'suv', 'red', 36000, 7);
+INSERT INTO cars VALUES (12, 'mazda', 'sedan', 'blue', 30000, 6);
+INSERT INTO cars VALUES (13, 'jaguar', 'sedan', 'black', 60000, 6);
+INSERT INTO cars VALUES (14, 'buick', 'sedan', 'black', 30000, 6);
+INSERT INTO cars VALUES (15, 'bmw', 'suv', 'blue', 45000, 7);
+
+Display car database in order by price
+
+SELECT * FROM cars ORDER BY price ;
+
+What is the sum of price for car database by rating ?
+
+SELECT rating, SUM(price) FROM cars GROUP BY rating;
