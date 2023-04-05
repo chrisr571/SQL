@@ -1,0 +1,14 @@
+select count(orderID) from BIT_DB.JanSales where length(orderID)=6 and orderID <>'' and orderID IS NOT NULL ;
+
+select count(orderID),product from BIT_DB.JanSales where length(orderID)=6 and orderID <>'' and orderID IS NOT NULL and Product = 'iPhone' ;
+
+select distinct a.acctnum from BIT_DB.customers a inner JOIN BIT_DB.FebSales b on a.order_id=b.orderID where length(orderid)=6 and orderid<> 'Order ID' ;
+
+select price, product from BIT_DB.JanSales group by product order by price asc limit 1 ;
+
+select product, sum(quantity)*price as revenue from BIT_DB.JanSales group by product ;
+
+select product,sum(quantity), sum(quantity)*price as revenue from BIT_DB.FebSales where location = '548 Lincoln St, Seattle, WA 98101' group by product;
+
+select Count( distinct b.acctnum),avg(quantity*price) as'avg_amount_spent' from BIT_DB.FebSales a left outer join BIT_DB.customers b on a.orderID = b.order_ID where a.quantity >2 and length(orderid)=6 and orderid <> 'Order ID';
+
