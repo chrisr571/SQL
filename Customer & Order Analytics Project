@@ -45,39 +45,39 @@ left outer join BIT_DB.customers b
 on a.orderID = b.order_ID where a.quantity >2 
 and length(orderid)=6 and orderid <> 'Order ID';
 
-List all products sold in Los Angeles in February and include how many of each were sold.
+#8. List all products sold in Los Angeles in February and include how many of each were sold.
 
 select distinct product, sum(quantity) 
 from BIT_DB.FebSales where location like '%Los Angeles%' 
 group by product;
 
-Which locations in New York received at least 3 orders in January and how many orders did they each recieve ?
+#9. Which locations in New York received at least 3 orders in January and how many orders did they each recieve ?
 
 select distinct location, count(orderID) from BIT_DB.JanSales where location like'%NY%' 
 and length(orderID) =6 and orderID <>'Order ID' 
 group by location having count(orderID) >2;
 
-How many of each type of headphone were sold in February ?
+#10. How many of each type of headphone were sold in February ?
 
 select distinct product, sum(quantity) from BIT_DB.FebSales 
 where product like '%Headphones%' 
 group by product ;
 
-What was the avg amount spent per account in February ?
+#11. What was the avg amount spent per account in February ?
 
 select sum(quantity*price)/count(b.acctnum) from BIT_DB.FebSales a 
 inner join BIT_DB.customers b
 on a.orderid=b.order_id 
 where length(orderID) =6 and orderID <>'Order ID';
 
-What was the avg quantity of products purchased per account in February ?
+#12. What was the avg quantity of products purchased per account in February ?
 
 select sum(quantity)/count(b.acctnum) from BIT_DB.FebSales a 
 left outer join BIT_DB.customers b 
 on a.orderid=b.order_id 
 where length(orderID) =6 and orderID <>'Order ID' ;
 
-Which product brought in the most revenue in January and how much revenue did it bring in total ?
+#13. Which product brought in the most revenue in January and how much revenue did it bring in total ?
 
 select product, sum(quantity*price) as revenue from BIT_DB.JanSales
 group by product 
