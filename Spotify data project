@@ -28,19 +28,19 @@ time_signature integer NOT NULL
 
 #Next, I explored the data using the following SQL. 
 
-#First I determined the avg popularity, danceability, and energy by artist and track. 
+#1. First I determined the avg popularity, danceability, and energy by artist and track. 
 
 select artist_name, track_name, avg(popularity),avg(danceability),avg(energy) 
 from BIT_DB.Spotifydata 
 group by artist_name,track_name ;
 
-#Second I determined the top 10 artist by popularity.
+#2. Second I determined the top 10 artist by popularity.
 
 select artist_name,track_name,popularity 
 from BIT_DB.Spotifydata 
 order by popularity desc limit 10 ;
 
-#Third I determined what the longest song was and who sang it.  For this query I used two different methods.
+#3. Third I determined what the longest song was and who sang it.  For this query I used two different methods.
 
 #Option 1
 select artist_name,track_name, max(duration_ms) 
@@ -51,7 +51,7 @@ select artist_name,track_name, duration_ms
 from BIT_DB.Spotifydata 
 order by duration_ms desc limit 1; 
 
-#Fourth, I determined what the shortest song was and by who.  Again I used two different methods to do so.
+#4. Fourth, I determined what the shortest song was and by who.  Again I used two different methods to do so.
 #Option #1
 select artist_name,track_name, min(duration_ms) 
 from BIT_DB.Spotifydata ;
@@ -61,7 +61,7 @@ select artist_name,track_name, duration_ms
 from BIT_DB.Spotifydata 
 order by duration_ms asc limit 1; 
 
-#astly, I wanted to see how many songs where in the top 50 by my two favorite artists.
+#5. Lastly, I wanted to see how many songs where in the top 50 by my two favorite artists.
 
 select artist_name,track_name 
 from BIT_DB.Spotifydata where artist_name = 'Bad Bunny' 
