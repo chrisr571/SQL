@@ -376,18 +376,18 @@ INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,A
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('Alfred M. Worden',1966,5,'Retired','2/7/1932','Jackson, MI','Male','US Military Academy; University of Michigan','Military Science','Aeronautical & Astronautical Engineering','Colonel','US Air Force (Retired)',1,295,1,0.5,'Apollo 15',NULL,NULL);
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('John W. Young',1962,2,'Retired','9/24/1930','San Francisco, CA','Male','Georgia Institute of Technology','Aeronautical Engineering',NULL,'Captain','US Navy (Retired)',6,835,3,20,'Gemini 3, Gemini 10, Apollo 10, Apollo 16, STS-1 (Columbia), STS-9 (Columbia)',NULL,NULL);
 
-Organized database by status for all astronauts.
+#1. Organized database by status for all astronauts.
 
 select status, Count(*) from astronauts
 group by status;
 
-Selecting max,min,and average values of space flight hours for astronauts.
+#2. Selecting max,min,and average values of space flight hours for astronauts.
 
 select Max(space_flight_hr) from astronauts;
 select min(space_flight_hr) from astronauts;
 select AVG(space_flight_hr) from astronauts;
 
-Creating a new table where astronauts are catergorized based on amount of space flight hours flown. 
+#3. Creating a new table where astronauts are catergorized based on amount of space flight hours flown. 
 
 SELECT COUNT(*),
 CASE
@@ -399,18 +399,18 @@ END AS "rank"
 FROM astronauts
 GROUP BY rank;
 
-Using the AND function to determine how many astronauts are active who have more than 4 space flights.
+#4. Using the AND function to determine how many astronauts are active who have more than 4 space flights.
 
 select * from astronauts 
 where space_flights > 4
 and status ='active' ;
 
-Using the OR function for astronauts where born before 1971 or status retired.
+#5. Using the OR function for astronauts where born before 1971 or status retired.
 
 select * from astronauts where year < 1971 
 or status='retired' ;
 
-Creating a data set using GROUP BY and HAVING function and organizing by alma mater whose astronauts have flown more than 3500 hours.
+#6. Creating a data set using GROUP BY and HAVING function and organizing by alma mater whose astronauts have flown more than 3500 hours.
 
 select alma_mater, sum(space_flight_hr) as total_space_hr
 from astronauts
